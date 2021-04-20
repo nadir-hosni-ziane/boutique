@@ -84,7 +84,30 @@ if(isset($_GET['del'])){
                     </th>
                 </tr>
         </table>
-        <button class="butt-valider-commande">Valider commande</button>
+        <form method="POST">
+            <?php
+                if($panier->total() != 0){
+                    echo '<input type="submit" name="validercommande" class="butt-valider-commande" value="Valider commande">';
+                }
+            ?>
+        </form>
+            <?php
+                if(isset($_POST['validercommande'])){
+                    $prix = $panier->total();
+                    $panier->finaliserCommande($_SESSION['id'], $prix);
+                    // for($_SESSION['panier'] as $key => $value) {
+                    //     echo $key.'<br>';
+                    //     echo $value.'<br>';
+                    //     // $panier->finaliserCommandedetail($key, $value);
+                    // }
+                    // header("location:information.php");
+                    foreach($_SESSION['panier'] as $key => $value) {
+                        for ($i=0; $i < 1; $i++) { 
+                            $panier->finaliserCommandedetail($key, $value);
+                        }
+                    }    
+                }
+            ?>  
     </section>
 </main>
 <?php include 'footer.php'; ?>

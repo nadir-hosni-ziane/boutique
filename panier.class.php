@@ -2,6 +2,7 @@
 class panier
 {
 public $_db;
+public $_lastinsertid;
 
     public function __construct(){
         if(!isset($_SESSION)){
@@ -48,6 +49,24 @@ public $_db;
 
     public function del($_produit_id){
         unset($_SESSION['panier'][$_produit_id]);
+    }
+
+    public function finaliserCommande($_id_user, $_prix_total){
+        $db = $this->_db;
+        $requete = "INSERT INTO commande (`id_utilisateur`, `prix_total`) VALUES ('$_id_user', '$_prix_total')";
+        $db->query($requete);
+        $this->_lastinsertid = $db->lastInsertId();
+    }
+
+    public function afficheridlast(){
+        echo $this->_lastinsertid;
+    }
+    
+    public function finaliserCommandedetail($_id_produit, $_quantite){
+        $db = $this->_db;
+        $id_commande = $this->_lastinsertid; 
+        $requete2 = "INSERT INTO `detailcommande`(`id_commande`, `id_produit`, `quantite`, `id_payer`) VALUES ('$id_commande', '$_id_produit', '$_quantite', '0')";
+        $db->query($requete2);
     }
 }
 ?>
