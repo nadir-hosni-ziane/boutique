@@ -30,6 +30,7 @@ $user->dbconnect();
     </div>
     <nav>
         <a href="recherche.php"><img class = 'logorecherche' src="images-boutique/recherche.png"></a>
+        <li><a href = 'admin.php'>Admin</a></li>
         <li><a href = 'index.php'>Accueil</a></li>
         <?php $user->affichercategorie(); ?>
     </nav>

@@ -30,8 +30,8 @@
     <section class = 'centrer_element'>
         <section class = 'casebase'>
             <h3 class = 'titreconnexioninscription'> Gerer les droits </h3>
-                <section class = 'form_droit'>
-                    <form action="" method="POST" >
+                <form action="" method="POST" >
+                    <section class = 'form_droit'>
                         <label class='lbl3' for="changementdroit" >Droit</label>
                         <select class ='select2' name="changementdroit" id="changementdroit" >
                             <option value="1" >Membres</option>
@@ -40,8 +40,7 @@
                         </select><br>
                         <label  class='lbl4' for="changement">Id de l'utilisateur</label><br>
                         <input type ='number' id = 'changement' name = 'changement' class='inpt4' ><br>
-                    </form>
-                </section>
+                    </section>
                     <div class = 'msg_centrer'>
                         <?php             
                             if(isset($_POST['validerlechangement'])){
@@ -49,8 +48,7 @@
                             }
                         ?>
                     </div>
-                <form action='' method='post'>
-                    <input type ='submit' id='validerlechangement' name = 'validerlechangement' value='Changer droit' class = 'buttonadmin3'>
+                        <input type ='submit' id='validerlechangement' name = 'validerlechangement' value='Changer droit' class = 'buttonadmin3'>
                 </form>
         </section>    
     </section>

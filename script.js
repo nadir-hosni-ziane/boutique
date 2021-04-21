@@ -5,7 +5,7 @@ window.onload = () => {
         locale: 'fr'
     })
     let elements = stripe.elements()
-    let redirect = "/boutique/index.php"
+    let redirect = "paiement-reussi.php"
 
 
     // Objet de la page 

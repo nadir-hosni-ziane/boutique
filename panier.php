@@ -11,6 +11,11 @@ if(isset($_GET['del'])){
 </div>
 <hr class="line-case">
 </section>
+    <?php
+        if($panier->total() != 0){
+            include 'cadreinfo.php';
+        }
+    ?>
     <div class="tab-skill">
         <table>
             <tr>
@@ -48,7 +53,29 @@ if(isset($_GET['del'])){
                 $produits = $panier->requete('SELECT * FROM article WHERE id_article IN ('.implode(',',$ids).')');
             }
             foreach($produits as $produit):
-            ?> 
+            ?>
+            <?php
+            if(isset($_POST['validercommande'])){
+                if(isset($_SESSION['id'])){
+                    if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pays']) && !empty($_POST['ville']) && !empty($_POST['cp']) && !empty($_POST['phone']) && !empty($_POST['adresse']) && !empty($_POST['email'])){
+                        $prix = $panier->total();
+                        $panier->finaliserCommande($_SESSION['id'], $prix, $_POST['nom'], $_POST['prenom'], $_POST['pays'], $_POST['ville'], $_POST['cp'], $_POST['phone'], $_POST['adresse'], $_POST['email']);
+                        foreach($_SESSION['panier'] as $key => $value) {
+                            for ($i=0; $i < 1; $i++) { 
+                                $panier->finaliserCommandedetail($key, $value);
+                            }
+                        } 
+                        header("location:paiement.php");   
+                    }else{
+                        echo"<script language=\"javascript\">";
+                        echo"alert('remplissez tout les champs')";
+                        echo"</script>";
+                    }
+                }else{
+                    header("location:connexion.php");
+                }
+            }
+            ?>
             <tr>
                 <td class="td4">
                     <img class = 'img_panier' src="images-boutique/<?= $produit->image_article?>" alt="image du produit">
@@ -84,30 +111,12 @@ if(isset($_GET['del'])){
                     </th>
                 </tr>
         </table>
-        <form method="POST">
             <?php
                 if($panier->total() != 0){
                     echo '<input type="submit" name="validercommande" class="butt-valider-commande" value="Valider commande">';
                 }
             ?>
         </form>
-            <?php
-                if(isset($_POST['validercommande'])){
-                    $prix = $panier->total();
-                    $panier->finaliserCommande($_SESSION['id'], $prix);
-                    // for($_SESSION['panier'] as $key => $value) {
-                    //     echo $key.'<br>';
-                    //     echo $value.'<br>';
-                    //     // $panier->finaliserCommandedetail($key, $value);
-                    // }
-                    // header("location:information.php");
-                    foreach($_SESSION['panier'] as $key => $value) {
-                        for ($i=0; $i < 1; $i++) { 
-                            $panier->finaliserCommandedetail($key, $value);
-                        }
-                    }    
-                }
-            ?>  
     </section>
 </main>
 <?php include 'footer.php'; ?>
