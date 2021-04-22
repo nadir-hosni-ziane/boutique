@@ -630,7 +630,17 @@ footer {
     color: #F7EBE8;
 }
 
+.scrollbar {
+    height: 400px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    overflow: scroll;
+}
+
 .tableau2 {
+    margin-top: 50px;
+    margin-bottom: 200px;
     table-layout: fixed;
     border: 1px solid #050505;
     border-collapse: collapse;
@@ -1224,6 +1234,7 @@ ul {
     font-family: 'Poppins', sans-serif;
     color: white;
     text-align: center;
+    background-color: black;
 }
 
 .produit-phare {
@@ -1241,6 +1252,7 @@ ul {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     opacity: 0.98;
+    transition: 0.35s;
 }
 
 .produit-phare2:hover {
@@ -1250,7 +1262,6 @@ ul {
     -moz-filter: brightness(25%);
     -o-filter: brightness(25%);
     -ms-filter: brightness(25%);
-    transition: 0.75s;
 }
 
 .bienvenue {

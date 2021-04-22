@@ -34,7 +34,7 @@ $resultat2 = $requete2->fetchall();
                     </textarea><br>
                     <label for='categorie_select' class='lbladmin'>Catégories :</label>
                     <select class='inptadmin' name="categorie">
-                        <?php    
+                        <?php
                         foreach ($resultat as $key) {
                         $id = $key['id'];
                         $nom = $key['nom_categorie'];
@@ -45,7 +45,7 @@ $resultat2 = $requete2->fetchall();
                     <input type='submit' name='submit_add_article' value='Ajouter article' class='buttonadmin'>
                 </form>
             <section class='caseerreur'>
-                <?php 
+                <?php
                 if(isset($_POST['submit_add_article']))
                 {
                 $user->ajouterarticle($_POST['nomarticle'], $_POST['descriptionarticle'], $_POST['imagearticle'], $_POST['categorie'],$_POST['prixarticle']); 
@@ -91,7 +91,7 @@ $resultat2 = $requete2->fetchall();
                                 $id = $key['id'];
                                 $nom = $key['nom_categorie'];
                                 echo "<option value='$id'>$nom</option>";
-                            } 
+                            }
                         ?>
                     </select><br>
             </section>
@@ -119,7 +119,7 @@ $resultat2 = $requete2->fetchall();
     </section>
         <section class = 'center_table'>
                 <table class = 'tableau1'>
-                    <thead> 
+                    <thead>
                         <tr>
                             <th class = 'th1'><h3>ID<h3></th>
                             <th class = 'th1'><h3>nom de l'article<h3></th>
@@ -139,12 +139,12 @@ $resultat2 = $requete2->fetchall();
                 <form action='' method='post'>
                     <label class='lbl3' for='supp_article'>ID de l'article :</label>
                     <select class='inptadmin' name="supp_article">
-                        <?php    
+                        <?php
                             foreach ($resultat2 as $key2) {
                             $id2 = $key2['id_article'];
                             $nom2 = $key2['nom_article'];
                             echo "<option value='$id2'>$id2</option>";
-                            } 
+                            }
                         ?>
                     </select><br>
             </section>
@@ -164,7 +164,7 @@ $resultat2 = $requete2->fetchall();
     </section>
         <section class = 'center_table'>
             <table class = 'tableau1'>
-                <thead> 
+                <thead>
                     <tr>
                         <th class = 'th1'><h3>ID<h3></th>
                         <th class = 'th1'><h3>Login<h3></th>
@@ -172,7 +172,7 @@ $resultat2 = $requete2->fetchall();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php
                         $user->afficherbasededonner()
                     ?>
                 </tbody>
@@ -193,7 +193,7 @@ $resultat2 = $requete2->fetchall();
                         <input type ='number' id = 'changement' name = 'changement' class='inpt4' ><br>
                     </section>
                     <div class = 'msg_centrer'>
-                        <?php             
+                        <?php
                             if(isset($_POST['validerlechangement'])){
                             $user->changementdedroit($_POST['changementdroit'], $_POST['changement']);
                             }
@@ -201,38 +201,38 @@ $resultat2 = $requete2->fetchall();
                     </div>
                         <input type ='submit' id='validerlechangement' name = 'validerlechangement' value='Changer droit' class = 'buttonadmin3'>
                 </form>
-        </section>    
+        </section>
     </section>
     <section class = 'casenoire'>
         <div class = 'titrecaserouge'>
             Liste des commandes
         </div>
     </section>
-    <table class = 'tableau2'>
-        <thead> 
-            <tr>
-                <th class = 'th2'><p class="detailcommande">payer 0/1<p></th>
-                <th class = 'th2'><p class="detailcommande">N° Commande<p></th>
-                <th class = 'th2'><p class="detailcommande">Quantité<p></th>
-                <th class = 'th2'><p class="detailcommande">prix total<p></th>
-                <th class = 'th2'><p class="detailcommande">Nom<p></th>
-                <th class = 'th2'><p class="detailcommande">Prénom<p></th>
-                <th class = 'th2'><p class="detailcommande">Pays<p></th>
-                <th class = 'th2'><p class="detailcommande">Ville<p></th>
-                <th class = 'th2'><p class="detailcommande">C-P<p></th>
-                <th class = 'th2'><p class="detailcommande">tèl<p></th>
-                <th class = 'th2'><p class="detailcommande">adresse<p></th>
-                <th class = 'th2'><p class="detailcommande">e-mail<p></th>
-                <th class = 'th2'><p class="detailcommande">nom article<p></th>
-                <th class = 'th2'><p class="detailcommande">login user<p></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+        <table class = 'tableau2'>
+            <thead>
+                <tr>
+                    <th class = 'th2'><p class="detailcommande">payer 0/1<p></th>
+                    <th class = 'th2'><p class="detailcommande">N° Commande<p></th>
+                    <th class = 'th2'><p class="detailcommande">Quantité<p></th>
+                    <th class = 'th2'><p class="detailcommande">prix total<p></th>
+                    <th class = 'th2'><p class="detailcommande">Nom<p></th>
+                    <th class = 'th2'><p class="detailcommande">Prénom<p></th>
+                    <th class = 'th2'><p class="detailcommande">Pays<p></th>
+                    <th class = 'th2'><p class="detailcommande">Ville<p></th>
+                    <th class = 'th2'><p class="detailcommande">C-P<p></th>
+                    <th class = 'th2'><p class="detailcommande">tèl<p></th>
+                    <th class = 'th2'><p class="detailcommande">adresse<p></th>
+                    <th class = 'th2'><p class="detailcommande">e-mail<p></th>
+                    <th class = 'th2'><p class="detailcommande">nom article<p></th>
+                    <th class = 'th2'><p class="detailcommande">login user<p></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
                 $panier->affichercommandepass();
-            ?>
-        </tbody>
-    </table>
-
+                ?>
+            </tbody>
+        </table>
+<?php include 'footer.php'?>
 </body>
 </html>

@@ -64,8 +64,8 @@ if(isset($_GET['del'])){
                             for ($i=0; $i < 1; $i++) { 
                                 $panier->finaliserCommandedetail($key, $value);
                             }
-                        } 
-                        header("location:paiement.php");   
+                        }
+                        header("location:paiement.php");
                     }else{
                         echo"<script language=\"javascript\">";
                         echo"alert('remplissez tout les champs')";

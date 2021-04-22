@@ -27,13 +27,13 @@ $prix = $panier->total();
                 </div>
                 <hr class="line-information">
                 <form method="POST" action="">
+                    <div id="errors"></div> <!-- contiendra les messages d'erreurs de paiements -->
+                    <div id="card-elements"></div> <!-- contiendra le formulaire de saisie des info de carte -->
+                    <div id="card-errors" role="alert"></div> <!-- contiendra les erreurs relative a la carte -->
                     <div class="input-align">
                         <label class="label4" for="card-holdername">Titulaire : </label>
                         <input id="card-holdername" class="input4-1" type='text' name='card-holdername' placeholder="    Titulaire">
                     </div> 
-                    <div id="errors"></div> <!-- contiendra les messages d'erreurs de paiements -->
-                        <div id="card-elements"></div> <!-- contiendra le formulaire de saisie des info de carte -->
-                    <div id="card-errors" role="alert"></div> <!-- contiendra les erreurs relative a la carte -->
                     <!-- <div class="input-align">
                         <label class="label5" for="crédit"> N° carte : </label>
                         <input class="input5" type='tel' name='crédit' inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="  xxxx xxxx xxxx xxxx">

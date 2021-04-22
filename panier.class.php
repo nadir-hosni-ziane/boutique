@@ -71,9 +71,13 @@ public $_lastinsertid;
 
     public function paiementaccepter(){
         $db = $this->_db;
-        $id_commande = $this->_lastinsertid; 
-        $requete2 = "UPDATE `detailcommande` SET `id_payer`= 1 WHERE id_commande = $id_commande";
-        $db->query($requete2);
+        $query = $db->prepare("SELECT MAX(id) FROM commande");
+        $query->execute();
+        $resultat = $query->fetchAll();
+        foreach ($resultat as $key){
+            $requete = "UPDATE `detailcommande` SET `id_payer`= 1 WHERE id_commande = $key[0]";
+            $db->query($requete);
+        }
     }
 
     public function affichercommandepass(){
