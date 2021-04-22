@@ -53,7 +53,8 @@ public $_lastinsertid;
 
     public function finaliserCommande($_id_user, $_prix_total, $_nom, $_prenom, $_pays, $_ville, $_cp, $_tel, $_adresse, $_email){
         $db = $this->_db;
-        $requete = "INSERT INTO commande (`id_utilisateur`, `prix_total`, `Nom`, `prenom`, `pays`, `ville`, `cp`, `telephone`, `adresse`, `email`) VALUES ('$_id_user', '$_prix_total', '$_nom', '$_prenom', '$_pays', '$_ville', '$_cp', '$_tel', '$_adresse', '$_email')";
+        $date_commande = date('Y/m/d');
+        $requete = "INSERT INTO commande (`id_utilisateur`, `prix_total`, `nom_commande`, `prenom_commande`, `pays`, `ville`, `cp`, `telephone`, `adresse`, `email_commande`, `date_commande`) VALUES ('$_id_user', '$_prix_total', '$_nom', '$_prenom', '$_pays', '$_ville', '$_cp', '$_tel', '$_adresse', '$_email', '$date_commande')";
         $db->query($requete);
         $this->_lastinsertid = $db->lastInsertId();
     }
@@ -82,7 +83,7 @@ public $_lastinsertid;
 
     public function affichercommandepass(){
         $db = $this->_db;
-        $requete = $db->prepare("SELECT * FROM detailcommande INNER JOIN commande on detailcommande.id_commande = commande.id INNER JOIN article on detailcommande.id_produit = article.id_article INNER JOIN utilisateurs on commande.id_utilisateur = utilisateurs.id");
+        $requete = $db->prepare("SELECT * FROM detailcommande INNER JOIN commande on detailcommande.id_commande = commande.id INNER JOIN article on detailcommande.id_produit = article.id_article INNER JOIN utilisateurs on commande.id_utilisateur = utilisateurs.id ORDER BY detailcommande.id DESC");
         $requete->execute();
         $resultat = $requete->fetchall();
         
@@ -92,14 +93,14 @@ public $_lastinsertid;
             echo "<td class='tdpetit'>".$key['id_commande']."</td>";
             echo "<td class='tdpetit'>".$key['quantite']."</td>";
             echo "<td class='tdmoyen'>".$key['prix_total']. '.OO €' ."</td>";
-            echo "<td class='tdpetit'>".$key['Nom']."</td>";
-            echo "<td class='tdpetit'>".$key['prenom']."</td>";
+            echo "<td class='tdpetit'>".$key['nom_commande']."</td>";
+            echo "<td class='tdpetit'>".$key['prenom_commande']."</td>";
             echo "<td class='tdpetit'>".$key['pays']."</td>";
             echo "<td class='tdpetit'>".$key['ville']."</td>";
             echo "<td class='tdpetit'>".$key['cp']."</td>";
             echo "<td class='tdpetit'>".$key['telephone']."</td>";
             echo "<td class='tdgrand'>".$key['adresse']."</td>";
-            echo "<td class='tdgrand'>".$key['email']."</td>";
+            echo "<td class='tdgrand'>".$key['email_commande']."</td>";
             echo "<td class='tdgrand'>".$key['nom_article']."</td>";
             echo "<td class='tdpetit'>".$key['login']."</td>";
             echo "</tr>";

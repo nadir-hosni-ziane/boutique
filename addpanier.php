@@ -1,5 +1,6 @@
 <?php 
 require 'header.php';
+$user->acces_connect();
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $produit = $panier->requete('SELECT * FROM article WHERE id_article = :id', array('id' => $_GET['id']));

@@ -1,9 +1,13 @@
 
 <?php include 'header.php';?>
+<?php $user->acces_connect(); ?>
 <?php
 require_once('vendor/autoload.php'); 
 $prix = $panier->total();
 
+if($prix <=0){
+    header("refresh: 3; url=index.php");
+}
 // j'instencie STRIPE
 
     \Stripe\Stripe::setApiKey('sk_test_51IhMI8BrNY4z7SFmqTURl3rzdvTYp2OYxl7UbllaftdCsUVATqSQvqVK1JLweIpJZkL6i51JjbQqmWtmzw3ClXMJ00FJtPao7C');

@@ -725,6 +725,15 @@ a {
     width: 130px;
 }
 
+.img_panier2 {
+    border: 1px solid rgba(82, 82, 82, 0.288);
+    border-radius: 10px;
+    transition: 0.5s;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.479);
+    height: 110px;
+    width: 110px;
+}
+
 .caserougepanier {
     color: #F7EBE8;
     font-size: 45PX;

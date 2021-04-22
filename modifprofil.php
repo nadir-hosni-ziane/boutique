@@ -1,4 +1,5 @@
 <?php include 'header.php';?>
+<?php $user->acces_connect(); ?>
     <section class = 'caserouge'>
         <div class = 'titrecaserouge'>
             Mon profil - Modification
@@ -8,7 +9,6 @@
         <section class = 'centrer2'>
             <section class = 'caseinfobase'>
                 <section class = 'caseerreur'>
-                    <?php $user->accesconnect(); ?>
                 </section>
                 <h3 class = 'titreconnexioninscription'>Modifier informations </h3>
                 <div class = 'casemodif'>

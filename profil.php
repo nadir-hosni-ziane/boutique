@@ -10,7 +10,7 @@
     <section class = 'centrer'>
         <section class = 'caseprofil'>
             <section class = 'caseerreur'>
-                <?php $user->accesconnect(); ?>
+                <?php $user->acces_connect(); ?>
             </section>
             <div class = 'caseprofil2'>
                 <img class = 'logouser2' src="images-boutique/man-user"><br>
@@ -50,6 +50,7 @@
             </form>
         </section>
     </section>
+    <?php include 'commande.php'; ?>
     <?php include 'footer.php';?>
 </body>
 </html>

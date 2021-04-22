@@ -1,4 +1,6 @@
 <?php include 'header.php';?>
+<?php $user->acces_connect(); ?>
+<?php $user->acces_admin(); ?>
 <?php
 $db = new PDO("mysql:host=localhost; dbname=boutique", 'root', '');
 $requete = $db->prepare('SELECT id, nom_categorie FROM categorie WHERE 1');
